@@ -69,6 +69,7 @@
                     &#169;
                     <?php echo get_theme_mod('copyright_year' . '') . ' '; ?>
                     <a href="<?php the_permalink(); ?>"><?php echo get_theme_mod('copyright_name', '') . ' '; ?></a>
+
                 <?php }
                 ?>
             </div>
