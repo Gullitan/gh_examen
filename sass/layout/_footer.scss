@@ -1,0 +1,65 @@
+input {
+  max-width: 561px;
+}
+.contacts .wrapper {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+input#wpforms-163-field_1 {
+
+  width: 561px;
+}
+.wpforms-field-large {
+  height: 62px;
+}
+input#wpforms-163-field_0, input#wpforms-163-field_1 {
+  height: 62px;
+  background-color: #f4f4f4;
+  padding: 25px;
+}
+textarea#wpforms-163-field_2 {
+  height: 310px;
+  padding: 25px;
+  background-color: #f4f4f4;
+}
+.wpforms-submit-container {
+  text-align: left;
+}
+button#wpforms-submit-163 {
+  margin-top: 30px;
+  width: 182px;
+  height: 60px;
+  background-color: #ff4848;
+  border: none;
+  color: white;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+.top {
+  background-color: #17212a;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.bottom {
+  padding-top: 32px;
+  padding-bottom: 25px;
+  background-color: #ff4848;
+  color: white;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 300;
+  .copyright {
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 300;
+    }
+  }
+}

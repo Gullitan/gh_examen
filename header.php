@@ -24,31 +24,15 @@
 
 	<header id="masthead" class="site-header" role="banner">
         <div class="wrapper">
-            <?php echo do_shortcode("[sp_responsiveslider design=\"design-1\" effect=\"fade\" navigation=\"true\"]");?>
-            <div class="logo">
-                <?php if (get_theme_mod('logo')) {
-                    echo '<img src="' . esc_url(get_theme_mod('logo')) . '">'; }?>
-            </div>
-            <div class="header-social">
-                <?php my_social_media_icons(); ?>
-            </div>
-            <nav id="site-navigation" class="menu-header main-navigation" role="navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'gh_exam' ); ?></button>
-                <?php wp_nav_menu( array( 'theme_location' => 'header', 'menu_id' => 'Primary' ) ); ?>
-            </nav>
-            <div class="search">
-                <?php get_sidebar(); ?>
-            </div>
-            <div class="header-title">
-                <h1>
-                    We <span class="green-text">Deliver</span> nothing Short of Awesome!
-                </h1>
-                <span>
-                    Check out our portfolio to see our great work.
-                </span>
-                <a href="#" class="portfolio">
-                    Portfolio
-                </a>
+            <div class="header">
+                <div class="logo">
+                    <?php if (get_theme_mod('logo')) {
+                        echo '<img src="' . esc_url(get_theme_mod('logo')) . '">'; }?>
+                </div>
+                <div id="site-navigation" class="menu-header main-navigation" role="navigation">
+                    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'gh_exam' ); ?></button>
+                    <?php wp_nav_menu( array( 'theme_location' => 'header', 'menu_id' => 'Primary' ) ); ?>
+                </div>
             </div>
         </div>
 	</header>

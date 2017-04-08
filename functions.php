@@ -7,70 +7,71 @@
  * @package gh_exam
  */
 
-if ( ! function_exists( 'gh_exam_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- */
-function gh_exam_setup() {
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on gh_exam, use a find and replace
-	 * to change 'gh_exam' to the name of your theme in all the template files.
-	 */
-	load_theme_textdomain( 'gh_exam', get_template_directory() . '/languages' );
+if (!function_exists('gh_exam_setup')) :
+    /**
+     * Sets up theme defaults and registers support for various WordPress features.
+     *
+     * Note that this function is hooked into the after_setup_theme hook, which
+     * runs before the init hook. The init hook is too late for some features, such
+     * as indicating support for post thumbnails.
+     */
+    function gh_exam_setup()
+    {
+        /*
+         * Make theme available for translation.
+         * Translations can be filed in the /languages/ directory.
+         * If you're building a theme based on gh_exam, use a find and replace
+         * to change 'gh_exam' to the name of your theme in all the template files.
+         */
+        load_theme_textdomain('gh_exam', get_template_directory() . '/languages');
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+        // Add default posts and comments RSS feed links to head.
+        add_theme_support('automatic-feed-links');
 
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
+        /*
+         * Let WordPress manage the document title.
+         * By adding theme support, we declare that this theme does not use a
+         * hard-coded <title> tag in the document head, and expect WordPress to
+         * provide it for us.
+         */
+        add_theme_support('title-tag');
 
-	/*
-	 * Enable support for Post Thumbnails on posts and pages.
-	 *
-	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	 */
-	add_theme_support( 'post-thumbnails' );
+        /*
+         * Enable support for Post Thumbnails on posts and pages.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+         */
+        add_theme_support('post-thumbnails');
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'header' => esc_html__( 'Primary', 'gh_exam' ),
-        'footer' => esc_html__( 'Footer', 'gh_exam' ),
-	) );
+        // This theme uses wp_nav_menu() in one location.
+        register_nav_menus(array(
+            'header' => esc_html__('Primary', 'gh_exam'),
+            'footer' => esc_html__('Footer', 'gh_exam'),
+        ));
 
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support( 'html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption',
-	) );
+        /*
+         * Switch default core markup for search form, comment form, and comments
+         * to output valid HTML5.
+         */
+        add_theme_support('html5', array(
+            'search-form',
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
+        ));
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'gh_exam_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
+        // Set up the WordPress core custom background feature.
+        add_theme_support('custom-background', apply_filters('gh_exam_custom_background_args', array(
+            'default-color' => 'ffffff',
+            'default-image' => '',
+        )));
 
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-}
+        // Add theme support for selective refresh for widgets.
+        add_theme_support('customize-selective-refresh-widgets');
+    }
 endif;
-add_action( 'after_setup_theme', 'gh_exam_setup' );
+add_action('after_setup_theme', 'gh_exam_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -79,45 +80,66 @@ add_action( 'after_setup_theme', 'gh_exam_setup' );
  *
  * @global int $content_width
  */
-function gh_exam_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'gh_exam_content_width', 640 );
+function gh_exam_content_width()
+{
+    $GLOBALS['content_width'] = apply_filters('gh_exam_content_width', 640);
 }
-add_action( 'after_setup_theme', 'gh_exam_content_width', 0 );
+
+add_action('after_setup_theme', 'gh_exam_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function gh_exam_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'gh_exam' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'gh_exam' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-    register_sidebar( array(
-        'name'          => esc_html__( 'Newsletter', 'gh_exam' ),
-        'id'            => 'sidebar-2',
-        'description'   => esc_html__( 'Add widgets here.', 'gh_exam' ),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h2 class="widget-title">',
-        'after_title'   => '</h2>',
-    ) );
-}
-add_action( 'widgets_init', 'gh_exam_widgets_init' );
-
-
-
-// post type services
-add_action('init', 'services');
-function services()
+function gh_exam_widgets_init()
 {
-    register_post_type('services', array(
+    register_sidebar(array(
+        'name' => esc_html__('Sidebar', 'gh_exam'),
+        'id' => 'sidebar-1',
+        'description' => esc_html__('Add widgets here.', 'gh_exam'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+    register_sidebar(array(
+        'name' => esc_html__('Newsletter', 'gh_exam'),
+        'id' => 'sidebar-2',
+        'description' => esc_html__('Add widgets here.', 'gh_exam'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+    register_sidebar(array(
+        'name' => esc_html__('Search', 'gh_exam'),
+        'id' => 'sidebar-3',
+        'description' => esc_html__('Add widgets here.', 'gh_exam'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+    register_sidebar(array(
+        'name' => esc_html__('Categories', 'gh_exam'),
+        'id' => 'sidebar-4',
+        'description' => esc_html__('Add widgets here.', 'gh_exam'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
+}
+
+add_action('widgets_init', 'gh_exam_widgets_init');
+
+
+// post type offering
+add_action('init', 'offering');
+function offering()
+{
+    register_post_type('offering', array(
         'public' => true,
         'supports' => array(
             'title',
@@ -126,26 +148,26 @@ function services()
             'custom-fields'
         ),
         'labels' => array(
-            'name' => __('Services', 'gh_exam'),
-            'add_new' => __('Add new service', 'gh_exam'),
-            'all_items' => __('All services', 'gh_exam'),
+            'name' => __('Offering', 'gh_exam'),
+            'add_new' => __('Add new offering', 'gh_exam'),
+            'all_items' => __('All offerings', 'gh_exam'),
 
         ),
-        'menu_icon'           => ('dashicons-admin-generic')
+        'menu_icon' => ('dashicons-admin-generic')
     ));
 }
 
 
-add_action('init', 'services_tax');
+add_action('init', 'offering_tax');
 
-function services_tax()
+function offering_tax()
 {
     register_taxonomy(
-        'services_type',
-        'services',
+        'offering_type',
+        'offering',
         array(
-            'label' => __('Services type'),
-            'rewrite' => array('slug' => 'services_type'),
+            'label' => __('Offering type'),
+            'rewrite' => array('slug' => 'offering_type'),
             'hierarchical' => true,
         )
     );
@@ -169,7 +191,7 @@ function clients()
             'all_items' => __('All clients', 'gh_exam'),
 
         ),
-        'menu_icon'           => ('dashicons-groups')
+        'menu_icon' => ('dashicons-groups')
     ));
 }
 
@@ -207,7 +229,7 @@ function news()
             'all_items' => __('All news', 'gh_exam'),
 
         ),
-        'menu_icon'           => ('dashicons-format-gallery')
+        'menu_icon' => ('dashicons-format-gallery')
     ));
 }
 
@@ -227,38 +249,45 @@ function news_tax()
     );
 }
 
-add_action( 'wp_default_scripts', function( $scripts ) {
-    if ( ! empty( $scripts->registered['jquery'] ) ) {
-        $scripts->registered['jquery']->deps = array_diff( $scripts->registered['jquery']->deps, array( 'jquery-migrate' ) );
+add_action('wp_default_scripts', function ($scripts) {
+    if (!empty($scripts->registered['jquery'])) {
+        $scripts->registered['jquery']->deps = array_diff($scripts->registered['jquery']->deps, array('jquery-migrate'));
     }
-} );
+});
 
 
 /**
  * FontAwesome
  */
-function font_awesome() {
+function font_awesome()
+{
     if (!is_admin()) {
         wp_register_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css');
         wp_enqueue_style('font-awesome');
     }
 }
+
 add_action('wp_enqueue_scripts', 'font_awesome');
 /**
  * Enqueue scripts and styles.
  */
-function gh_exam_scripts() {
-	wp_enqueue_style( 'gh_exam-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'google_fonts', 'https://fonts.googleapis.com/css?family=Roboto' );
-    wp_enqueue_style( 'gh_exam_main_styles', get_template_directory_uri() . '/css/main.css');
+function gh_exam_scripts()
+{
+    wp_enqueue_style('gh_exam-style', get_stylesheet_uri());
+    wp_enqueue_style('google_fonts', 'https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+    wp_enqueue_style('gh_exam_main_styles', get_template_directory_uri() . '/css/main.css');
+    wp_enqueue_script('gh_exam_main_isotope_js', get_template_directory_uri() . '/js/isotope.js');
+    wp_enqueue_script('gh_exam_main_js', get_template_directory_uri() . '/js/main.js');
+    wp_enqueue_script('jquery');
 
-    wp_enqueue_script( 'gh_exam-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+    wp_enqueue_script('gh_exam-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'gh_exam_scripts' );
+
+add_action('wp_enqueue_scripts', 'gh_exam_scripts');
 
 // logo
 function gootheme_theme_customizer($wp_customize)
@@ -283,7 +312,6 @@ function gootheme_theme_customizer($wp_customize)
 }
 
 add_action('customize_register', 'gootheme_theme_customizer');
-
 
 
 // social icons
@@ -385,6 +413,7 @@ add_action('customize_register', function ($customizer) {
             'type' => 'text',
         )
     );
+
     $customizer->add_setting(
         'copyright_year',
         array('default' => '2017')
@@ -405,26 +434,7 @@ add_action('customize_register', function ($customizer) {
             'section' => 'edit-copyright',
         )
     );
-    $customizer->add_setting(
-        'copyrighter_name',
-        array('default' => 'Krasnenko')
-    );
-    $customizer->add_control(
-        'copyrighter_name',
-        array(
-            'label' => 'Name',
-            'section' => 'edits-copyright',
-            'type' => 'text',
-        )
-    );
-    $customizer->add_control(
-        'hide_copyright',
-        array(
-            'type' => 'checkbox',
-            'label' => 'Copyrighter name',
-            'section' => 'edit-copyrighter-name',
-        )
-    );
+
 });
 
 
@@ -439,7 +449,7 @@ add_action('customize_register', function ($customizer) {
     );
     $customizer->add_setting(
         'address',
-        array('default' => 'GeekHub-Examen')
+        array('default' => '123 Office, Street No 2, Parkview. Sednney, Australia.')
     );
     $customizer->add_control(
         'address',
@@ -448,9 +458,31 @@ add_action('customize_register', function ($customizer) {
             'section' => 'address',
             'type' => 'textarea',
         )
-);
+    );
 });
 
+add_action('customize_register', function ($customizer) {
+    $customizer->add_section(
+        'telephone_number',
+        array(
+            'title' => 'Telephone number',
+            'description' => 'Edit',
+            'priority' => 35,
+        )
+    );
+    $customizer->add_setting(
+        'telephone_number',
+        array('default' => '+1 123 4567 891')
+    );
+    $customizer->add_control(
+        'telephone_number',
+        array(
+            'label' => 'telephone_number',
+            'section' => 'telephone_number',
+            'type' => 'text',
+        )
+    );
+});
 
 
 /**
